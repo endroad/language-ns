@@ -65,7 +65,7 @@
 	'strings':
 		'patterns': [
 			{ # Double quoted string
-				'begin': '"'
+				'begin': '@"'
 				'end': '"'
 				'name': 'string.quoted.double.c'
 			}
@@ -95,9 +95,9 @@
 				'name': 'keyword.operator.c'
 			}
 			{ # Logic operator
-				'match': '\\b(is|not|and|or)\\b'
+				'match': '\\b(is|not|and|or|add)\\b'
 				'name': 'keyword.operator.c'
-			}			
+			}
 			{ # Declarations and declaration specifiers
 				'match': '\\b(in|inout|out|entity)\\b'
 				'name': 'storage.modifier.c'
