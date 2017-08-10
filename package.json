@@ -1,7 +1,7 @@
 {
   "name": "language-ns",
   "main": "./lib/language-ns",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Atom package for NuSpeak Scripting language (Internally developed at Endroad)",
   "keywords": [
     "nuspeak"
