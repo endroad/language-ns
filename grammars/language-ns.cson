@@ -1,0 +1,109 @@
+'scopeName': 'source.c'
+'name': 'NuSpeak'
+'fileTypes': [
+	'ns'
+]
+'patterns': [
+	{ # Numbers
+		'match': '\\b([0-9]+\\.?[0-9]*|true|false)\\b'
+		'name': 'constant.numeric.c'
+	}
+	{ # c classes
+		'match': '\\b(Shader|Properties|Category|SubShader|Tags|Pass)\\b'
+		'name': 'support.class.c'
+	}
+	{ # script section
+		'match': '(endscript)'
+		'name': 'support.class.c'
+	}
+    { # script name
+        'match': '(script:)\\s*([A-Za-z_][A-Za-z_0-9]+)'
+        'captures':
+            '1':
+                'name': 'support.class.c'
+            '2':
+                'name': 'meta.function-call.c'
+        'name': 'meta.function-call.c'
+    }
+
+	{ # entity access
+        'match': '([A-Za-z_][A-Za-z_0-9]+)(->)'
+        'captures':
+            '1':
+                'name': 'storage.modifier.c'
+            '2':
+                'name': 'keyword.operator.c'
+        'name': 'meta.function-call.c'
+    }
+	{
+		'include': '#comments'
+	}
+	{
+		'include': '#strings'
+	}
+	{
+		'include': '#functions'
+	}
+	{
+		'include': '#ns'
+	}
+]
+'repository':
+	'comments':
+		'patterns': [
+			{ # Comment line
+				'begin': '//'
+				'end': '$'
+				'name': 'comment.line.double-slash.c'
+			}
+			{ # Comment block
+				'begin': '/\\*'
+				'end': '\\*/'
+				'name': 'comment.line.block.c'
+			}
+		]
+	'strings':
+		'patterns': [
+			{ # Double quoted string
+				'begin': '"'
+				'end': '"'
+				'name': 'string.quoted.double.c'
+			}
+		]
+	'functions':
+		'patterns': [
+			{ # Any function (copied from the languages-c package)
+				'match': '(?x) (?: (?= \\s )  (?:(?<=else|new|return) | (?<!\\w)) (\\s+))?\n\t\t\t(\\b \n\t\t\t\t(?!(while|for|do|if|else|switch|catch|enumerate|return|sizeof|[cr]?iterate)\\s*\\()(?:(?!NS)[A-Za-z_][A-Za-z0-9_]*+\\b | :: )++				  # actual name\n\t\t\t)\n\t\t\t \\s*(\\()'
+				'captures':
+					'1':
+						'name': 'punctuation.whitespace.function-call.leading.c'
+					'2':
+						'name': 'support.function.any-method.c'
+					'3':
+						'name': 'punctuation.definition.parameters.c'
+				'name': 'meta.function-call.c'
+			}
+		]
+	'ns':
+		'patterns': [
+			{ # Preprocessors
+				'match': '\\b(else|if|then|end)\\b'
+				'name': 'keyword.control.c'
+			}
+			{ # Swizzle operator
+				'match': '\\.([xyzw]{1,4})\\b'
+				'name': 'keyword.operator.c'
+			}
+			{ # Logic operator
+				'match': '\\b(is|not|and|or)\\b'
+				'name': 'keyword.operator.c'
+			}			
+			{ # Declarations and declaration specifiers
+				'match': '\\b(in|inout|out|entity)\\b'
+				'name': 'storage.modifier.c'
+			}
+			{ # Data types
+				'match': '\\b(void|float([1-4])*(x[1-4])*|int([1-4])*(x[1-4])*|bool([1-4])*(x[1-4])*)\\b'
+				'name': 'storage.type.c'
+			}
+		]
