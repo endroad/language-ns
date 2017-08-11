@@ -65,7 +65,7 @@
 	'strings':
 		'patterns': [
 			{ # Double quoted string
-				'begin': '@"'
+				'begin': '"'
 				'end': '"'
 				'name': 'string.quoted.double.c'
 			}
