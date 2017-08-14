@@ -70,24 +70,24 @@
 				'name': 'string.quoted.double.c'
 			}
 		]
-	'functions':
-		'patterns': [
-			{ # Any function (copied from the languages-c package)
-				'match': '(?x) (?: (?= \\s )  (?:(?<=else|new|return) | (?<!\\w)) (\\s+))?\n\t\t\t(\\b \n\t\t\t\t(?!(while|for|do|if|else|switch|catch|enumerate|return|sizeof|[cr]?iterate)\\s*\\()(?:(?!NS)[A-Za-z_][A-Za-z0-9_]*+\\b | :: )++				  # actual name\n\t\t\t)\n\t\t\t \\s*(\\()'
-				'captures':
-					'1':
-						'name': 'punctuation.whitespace.function-call.leading.c'
-					'2':
-						'name': 'support.function.any-method.c'
-					'3':
-						'name': 'punctuation.definition.parameters.c'
-				'name': 'meta.function-call.c'
-			}
-		]
+	# 'functions':
+	# 	'patterns': [
+	# 		{ # Any function (copied from the languages-c package)
+	# 			'match': '(?x) (?: (?= \\s )  (?:(?<=else|new|return) | (?<!\\w)) (\\s+))?\n\t\t\t(\\b \n\t\t\t\t(?!(while|for|do|if|else|switch|catch|enumerate|return|sizeof|[cr]?iterate)\\s*\\()(?:(?!NS)[A-Za-z_][A-Za-z0-9_]*+\\b | :: )++				  # actual name\n\t\t\t)\n\t\t\t \\s*(\\()'
+	# 			'captures':
+	# 				'1':
+	# 					'name': 'punctuation.whitespace.function-call.leading.c'
+	# 				'2':
+	# 					'name': 'support.function.any-method.c'
+	# 				'3':
+	# 					'name': 'punctuation.definition.parameters.c'
+	# 			'name': 'meta.function-call.c'
+	# 		}
+	# 	]
 	'ns':
 		'patterns': [
 			{ # Preprocessors
-				'match': '\\b(else|if|then|end)\\b'
+				'match': '\\b(else|if|then|end|this|event)\\b'
 				'name': 'keyword.control.c'
 			}
 			{ # Swizzle operator
@@ -99,11 +99,11 @@
 				'name': 'keyword.operator.c'
 			}
 			{ # Declarations and declaration specifiers
-				'match': '\\b(in|inout|out|entity)\\b'
+				'match': '\\b(in|inout|out|entity|global)\\b'
 				'name': 'storage.modifier.c'
 			}
 			{ # Data types
-				'match': '\\b(void|float([1-4])*(x[1-4])*|int([1-4])*(x[1-4])*|bool([1-4])*(x[1-4])*)\\b'
+				'match': '\\b(stat|void|float([1-4])*(x[1-4])*|int([1-4])*(x[1-4])*|bool([1-4])*(x[1-4])*|string)\\b'
 				'name': 'storage.type.c'
 			}
 		]
